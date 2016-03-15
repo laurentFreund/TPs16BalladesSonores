@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import balades.tps16balladessonores.dummy.DummyContent;
-import balades.tps16balladessonores.dummy.DummyContent.DummyItem;
+import balades.tps16balladessonores.dummy.BalladeContent;
+import balades.tps16balladessonores.dummy.BalladeContent.BalladeItem;
 
 /**
  * A fragment representing a list of Items.
@@ -67,7 +67,7 @@ public class ListBalladesFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(BalladeContent.ITEMS, mListener));
         }
         return view;
     }
@@ -102,6 +102,6 @@ public class ListBalladesFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(BalladeItem item);
     }
 }
