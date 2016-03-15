@@ -1,9 +1,11 @@
 package balades.tps16balladessonores;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import balades.tps16balladessonores.ListBalladesFragment.OnListFragmentInteractionListener;
@@ -20,15 +22,18 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
     private final List<BalladeItem> mValues;
     private final OnListFragmentInteractionListener mListener;
-
+    private Context context ;
     public MyItemRecyclerViewAdapter(List<BalladeItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
+
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
+
+        context = parent.getContext() ;
+        View view = LayoutInflater.from(context)
                 .inflate(R.layout.fragment_item, parent, false);
         return new ViewHolder(view);
     }
@@ -39,6 +44,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mIdView.setText(mValues.get(position).id);
         holder.mContentView.setText(mValues.get(position).content);
 
+        int imgId = context.getResources().getIdentifier("promenade_icon_"+position, "drawable", context.getPackageName());
+        holder.mImgView.setImageResource(imgId);
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +67,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
+        public final ImageView mImgView ;
         public BalladeItem mItem;
 
         public ViewHolder(View view) {
@@ -67,6 +75,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.id);
             mContentView = (TextView) view.findViewById(R.id.content);
+            mImgView = (ImageView) view.findViewById(R.id.imageView);
+
         }
 
         @Override
