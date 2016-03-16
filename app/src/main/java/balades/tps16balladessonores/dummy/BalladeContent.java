@@ -23,7 +23,7 @@ public class BalladeContent {
      */
     public static final Map<String, BalladeItem> ITEM_MAP = new HashMap<>();
 
-    private static final int COUNT = 25;
+    private static final int COUNT = 20;
 
     static {
         // Add some sample items.
